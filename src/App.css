@@ -1,0 +1,82 @@
+@font-face{
+  font-family:"omori";
+  src: url("./assets/OMORI_GAME2.ttf");
+}
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  font-family: 'omori', sans-serif;
+}
+
+
+html,body{
+  background-color:black;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+  padding:.5rem 3rem;
+}
+.header .title{
+  font-size:3rem;
+}
+
+.header .mistakes{
+  font-size:1.5rem;
+}
+
+.keyboard-container div{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:.5rem;
+  margin-top:.2rem;
+}
+
+.keyboard-container div .letter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:70px;
+  height:70px;
+  border: 3px solid white;
+  color:white;
+  font-size:2.5rem;
+  cursor:pointer;
+}
+
+.keyboard-container div .clicked {
+  background-color:white;
+  color:black;
+}
+
+.word-container{
+  display:flex;
+  gap:.5rem;
+  justify-content:center;
+  align-items:center;
+  margin:5rem 0;
+}
+
+.word-container .letter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  width:70px;
+  height:70px;
+  border-bottom: 3px solid white;
+}
+
+.word-container .letter h1{
+  font-size:2.5rem;
+}
+
+
+.word-container .letter .show{
+  visibility: initial;
+}
