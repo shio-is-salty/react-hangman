@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-export const Letter = ({letter, onChange}) => {
+export const Letter = ({letter, onChange, playClick}) => {
   const [isClicked, setIsClicked] = useState(false)
 
   function click(){
@@ -8,6 +8,7 @@ export const Letter = ({letter, onChange}) => {
       return
     }
 
+    playClick()
     setIsClicked(true)
     onChange(letter)
     console.log(letter+" clicked")

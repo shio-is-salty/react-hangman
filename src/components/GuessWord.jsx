@@ -1,12 +1,56 @@
 import { useState, useEffect } from "react"
 
-
-export const GuessWord = ({guessLetter, setMistakes}) => {
+export const GuessWord = ({guessLetter, setMistakes, setWin}) => {
   const [correctGuess, setCorrectGuess] = useState([])
-  const [word, setWord] = useState(["H", "A", "K", "D", "O", "G"])
-  const [win, setWin] = useState(false)
+  const [word, setWord] = useState([])
+
+  const wordArr = [
+   'char',
+   'converts',
+   'creating',
+   'each',
+   'file',
+   'function',
+   'implemennt',
+   'into',
+   'line',
+   'path',
+   'reader',
+   'simple',
+   'takes',
+   'text',
+   'that',
+   'trying',
+   'working'
+  ]
+
+  useEffect(() => {
+    setGuessWord()
+
+  },[])
+
+  useEffect(() => {
+    if(word.length <= 0){
+      return
+    }
+    if(word.length === correctGuess.length){
+      setWin(true)
+    }
+
+  }, [correctGuess])
 
 
+  function setGuessWord(){
+    const random = Math.floor(Math.random() * wordArr.length)
+    const randomWord = wordArr[random].toUpperCase()
+    const randomWordArr = []
+    for (let i=0; i<randomWord.length; i++){
+      randomWordArr.push(randomWord[i])
+    }
+    setWord(randomWordArr)
+  }
+
+  console.log(word)
 
   useEffect(() => {
     if(guessLetter){
@@ -23,17 +67,6 @@ export const GuessWord = ({guessLetter, setMistakes}) => {
 
   }, [guessLetter])
 
-  useEffect(() => {
-    if(word.length === correctGuess.length){
-      setWin(true)
-    }
-
-  }, [correctGuess])
-
-  useEffect(() => {
-    win ? alert('You Win!'): ""
-
-  }, [win])
 
 
 
@@ -52,10 +85,14 @@ export const GuessWord = ({guessLetter, setMistakes}) => {
   }
 
 
+  if(word.length === 0){
+    return "Hakdog"
+  }
+
   return (
     <div className="word-container">
       {word.map((w,i) => (
-        <div className="letter">
+        <div key={i} className="letter">
           {isSame(w) ? <h1>{w}</h1>: ""}
         </div>
       ))}
